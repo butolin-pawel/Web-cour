@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/input.css" rel="stylesheet">
+        <link href="/dist/output.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container m-auto">
+        <nav class=" inset-0 z-10 block h-max w-full max-w-full rounded-none border border-black/80 bg-black bg-opacity-80 py-2 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4">
+            <div class="flex items-center text-white">
+            <a
+                href="#"
+                class="mr-4 block cursor-pointer  font-sans text-base font-medium leading-relaxed text-inherit antialiased"
+            >
+                <img src="./Img/Group 27.png" class="max-h-24" alt="">
+            </a>
+            <ul class="ml-auto mr-auto hidden items-center gap-6 lg:flex text-white">
+                <li class="block p-1 font-sans text-xl font-normal leading-normal text-inherit antialiased">
+                <a class="flex items-center" href="#">
+                    Главная
+                </a>
+                </li>
+                <li class="block p-1 font-sans text-xl font-normal leading-normal text-inherit antialiased">
+                <a class="flex items-center" href="#">
+                    Занятость шиномонтажа
+                </a>
+                </li>
+                <li class="block p-1 font-sans text-xl font-normal leading-normal text-inherit antialiased">
+                <a class="flex items-center bg-red-600  px-1 py-2  h-8 rounded-xl"  href="#">
+                    Срочная запись
+                </a>
+                </li>
+                
+                
+            </ul>
+            <a  href="#" class="  mr-5">
+                <img  class="max-h-12" src="./Img/cart-trolley-ui-5-svgrepo-com.png" alt="">
+                </a>
+            <button
+    class="select-none rounded-lg bg-red-600 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+    type="button"
+    data-dialog-target="sign-in-dialog"
+    >
+    Войти
+                </button>
+        </nav>
+    <section class="text-gray-600 body-font bg-black bg-opacity-80">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-4">
+            <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white">Корзина</h1>
+           </div>
+          <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+            <table class="table-auto w-full text-left bg-red-600 text-white whitespace-no-wrap">
+              <thead class="">
+                <tr>
+                  <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Название</th>
+                  <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Характеристики</th>
+                  <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Количество</th>
+                  <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Стоимость</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="px-4 py-3"> Диск</td>
+                  <td class="px-4 py-3">Красивый</td>
+                  <td class="px-4 py-3">2 шт.</td>
+                  <td class="px-4 py-3 text-lg text-red-200">8400р.</td>
+                  
+                </tr>
+                <tr>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">Резина</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">Хорошая</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">2 шт.</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-red-200">7400р.</td>
+                  
+                </tr>
+                <tr>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">Резина</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">Плохая</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3">2 шт.</td>
+                  <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-red-200">5500р.</td>
+                  
+                </tr>
+                <tr>
+                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">Диск</td>
+                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">Плохой</td>
+                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">2 шт.</td>
+                  <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3 text-lg text-red-200">3300р.</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+            <p class="text-white text-2xl ">К оплате: 24 600 р.</p>
+            <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Перейти к оплате</button>
+          </div>
+        </div>
+      </section>
+    </div>
+</body>
+</html>

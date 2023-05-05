@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Автосервис</title>
+    <!-- Подключение стилей tailwind -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css">
+</head>
+<body>
+    <div class="container m-auto">
+    <div>
+        <table class="table-fixed w-full">
+            <thead>
+                <tr>
+                    <th class="w-1/4 px-4 py-2">Название</th>
+                    <th class="w-1/4 px-4 py-2">Характеристика</th>
+                    <th class="w-1/4 px-4 py-2">Количество</th>
+                    <th class="w-1/4 px-4 py-2">Итоговая стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border px-4 py-2">Товар 1</td>
+                    <td class="border px-4 py-2">Характеристика 1</td>
+                    <td class="border px-4 py-2">1</td>
+                    <td class="border px-4 py-2">200 руб.</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">Товар 2</td>
+                    <td class="border px-4 py-2">Характеристика 2</td>
+                    <td class="border px-4 py-2">3</td>
+                    <td class="border px-4 py-2">600 руб.</td>
+                </tr>
+                <tr>
+                    <td class="border px-4 py-2">Товар 3</td>
+                    <td class="border px-4 py-2">Характеристика 3</td>
+                    <td class="border px-4 py-2">2</td>
+                    <td class="border px-4 py-2">400 руб.</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="flex justify-end mt-4">
+            <p class="mr-2">Итоговая стоимость: 1200 руб.</p>
+        </div>
+    
+        <div class="flex justify-end mt-4">
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded">Оплатить</button>
+            <button class="bg-black text-white font-bold py-2 px-4 rounded">Оформить заявку на прием</button>  
+        </div>
+    </div>
+    <div class="bg-black p-4">
+        
+        <div class="bg-red-900 text-white p-6">
+            <form>
+              <h1 class="text-2xl">Выберите услуги:</h1>
+              <div class="flex flex-col mt-4">
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                  <span class="ml-2">Услуга 1</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                  <span class="ml-2">Услуга 2</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                  <span class="ml-2">Услуга 3</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="form-checkbox" />
+                  <span class="ml-2">Услуга 4</span>
+                </label>
+              </div>
+              <button class="mt-4 bg-black text-white py-2 px-4 rounded">Отправить</button>
+            </form>
+          </div>
+        <form class="max-w-sm mx-auto bg-red-600 rounded p-5">
+            
+            <div class="mb-4">
+                <label class="block text-white font-bold mb-2" for="datepicker">
+                    Время посещения
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="datepicker" type="datetime-local" placeholder="Выберите дату">
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-white font-bold mb-2" for="car_type">
+                    Тип автомобиля
+                </label>
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="car_type">
+                    <option>Легковой</option>
+                    <option>Грузовой</option>
+                    <option>Автобус</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-white font-bold mb-2" for="wheel_radius">
+                    Параметры колес
+                </label>
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="wheel_radius">
+                    <option>11R</option>
+                    <option>12R</option>
+                    <option>13R</option>
+                    <option>14R</option>
+                    <option>15R</option>
+                    <option>16R</option>
+                    <option>17R</option>
+                    <option>18R</option>
+                    <option>19R</option>
+                    <option>20R</option>
+                    <option>21R</option>
+                    <option>22R</option>
+                </select>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-white font-bold mb-2" for="total_cost">
+                    Итоговая стоимость
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total_cost" type="text" readonly>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Отправить заявку
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+                    

@@ -1,0 +1,32 @@
+<div class=" m-auto">
+  <div class="relative right-0">
+  <ul
+      class="relative flex list-none flex-wrap rounded-xl bg-blue-gray-50/60 p-1 mb-3"
+      data-tabs="tabs"
+      role="list"
+  >
+      <li class="z-30 flex-auto text-center bg-white border-red-600 border-2 rounded-lg mr-1">
+      <a
+          class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
+          routerLink="/home" routerLinkActive="active-link"
+      >
+          <span class="ml-1">Каталог товаров</span>
+      </a>
+      </li>
+      <li class="z-30 flex-auto text-center border-red-600 border-2 rounded-lg">
+      <a
+          class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
+          routerLink="/home/service" routerLinkActive="active-link"
+      >
+          <span class="ml-1">Наши услуги</span>
+      </a>
+      </li>
+
+  </ul>
+  <div data-tab-content="" class="p-5 text-center">
+
+      <router-outlet></router-outlet>
+  </div>
+  </div>
+</div>
+
