@@ -10,6 +10,7 @@ import { CartComponent } from './cart/cart.component';
 import { QuicklyRequestComponent } from './quickly-request/quickly-request.component';
 import { KabinetComponent } from './kabinet/kabinet.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { GoodInfoComponent } from './good-info/good-info.component';
 
 const routes: Routes = [
  { path: 'timing', component: TimingComponent},
@@ -21,6 +22,9 @@ const routes: Routes = [
     },
     {
       path:'service', component: ServCatalogComponent
+    },
+    {
+      path:'id', component:GoodInfoComponent
     }
   ]
   },

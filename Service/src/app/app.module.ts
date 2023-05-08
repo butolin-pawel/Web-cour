@@ -14,6 +14,10 @@ import { CartComponent } from './cart/cart.component';
 import { QuicklyRequestComponent } from './quickly-request/quickly-request.component';
 import { KabinetComponent } from './kabinet/kabinet.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { FooterComponent } from './footer/footer.component';
+import { GoodInfoComponent } from './good-info/good-info.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,11 +32,15 @@ import { ContactsComponent } from './contacts/contacts.component';
     CartComponent,
     QuicklyRequestComponent,
     KabinetComponent,
-    ContactsComponent
+    ContactsComponent,
+    FooterComponent,
+    GoodInfoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
