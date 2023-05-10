@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-goods-catalog',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./goods-catalog.component.css']
 })
 export class GoodsCatalogComponent {
-
+  faCartPlus =faCartPlus
 }
