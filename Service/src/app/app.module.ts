@@ -18,7 +18,11 @@ import { FooterComponent } from './footer/footer.component';
 import { GoodInfoComponent } from './good-info/good-info.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { TokenInterceptor } from './Class/http-interceptor';
+import { AuthService } from './services/auth.service';
+// import { FlexLayoutModule } from '@angular/flex-layout';
+// import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +45,13 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
+    HttpClientModule,
+    // FlexLayoutModule,
+    // CdkVirtualScrollableElement,
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

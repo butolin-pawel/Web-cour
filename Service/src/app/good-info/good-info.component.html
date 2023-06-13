@@ -1,35 +1,28 @@
-<section class="text-gray-600 body-font overflow-hidden">
+<section class="text-gray-900 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://remzonamsk.ru/wp-content/uploads/2018/06/tire1.jpg">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">Резина</h1>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{good.name}}</h1>
+
         <div class="flex mb-4">
 
 
         </div>
-        <p class="text-left opcacity-60 mb-3">
-          Производитель: ...... <br>
-          Сезон: Лето <br>
-          Размер: 185/65 R15 <br>
-          Индекс нагрузки: T 88
-      </p><div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+        <p class="text-left text-xl mb-3">
+          Производитель: {{good.maker}}
+      </p>
+      <div *ngFor="let item of convertJson(good.characters)">
+        <p class="text-left text-xl mb-3" >{{item.key }}: {{ item.value }}</p>
+        </div>
+        <p class="text-left text-xl mb-3">Ширина: {{good.height}}</p>
+      <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex  items-center">
-            <span class="mr-3">Радиус</span>
+            <span class="mr-3  text-xl">Радиус</span>
             <div class="relative">
-              <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                <option>11R</option>
-              <option>12R</option>
-              <option>13R</option>
-              <option>14R</option>
-              <option>15R</option>
-              <option>16R</option>
-              <option>17R</option>
-              <option>18R</option>
-              <option>19R</option>
-              <option>20R</option>
-              <option>21R</option>
-              <option>22R</option>
+              <select [(ngModel)]="currRad" (ngModelChange)="setMaxCount()" class="rounded border-2 border-red-600 appearance-none  py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+              <option *ngFor="let rad of radiusi" value="{{rad.id}}">{{rad.radius}}</option>
+
               </select>
               <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
@@ -39,10 +32,10 @@
             </div>
           </div>
         </div>
-        <div class="flex">
-          <span class="title-font font-medium text-2xl text-gray-900 mr-auto">5499р</span>
-          <p>Количество <input type="number" min="0" value="0" class=" border-2 mr-4  border-red-600 rounded-md px-1 w-16"></p>
-          <button class=" middle none center rounded-lg bg-red-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Добавить в корзину</button>
+        <div class="flex flex-row  ">
+          <span class="title-font font-medium text-2xl text-gray-900 mr-auto">{{good.cost}} руб.</span>
+          <p class="pt-1">Количество <input [(ngModel)]="count" type="number" min="0" value="0" max="{{maxCount}}"  class=" border-2 mr-4  border-red-600 rounded-md px-1 w-16"></p>
+          <button (click)="addToCart(good)" class=" middle none center rounded-lg bg-red-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Добавить в корзину</button>
         </div>
       </div>
     </div>

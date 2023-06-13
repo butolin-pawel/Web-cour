@@ -24,7 +24,7 @@ const routes: Routes = [
       path:'service', component: ServCatalogComponent
     },
     {
-      path:'id', component:GoodInfoComponent
+      path:':id', component:GoodInfoComponent
     }
   ]
   },
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'cart', component:CartComponent},
   {path:'quickly', component:QuicklyRequestComponent},
   {path:'account', component:KabinetComponent},
-  {path:'contacts', component:ContactsComponent}
+  {path:'contacts', component:ContactsComponent},
 ];
 
 @NgModule({

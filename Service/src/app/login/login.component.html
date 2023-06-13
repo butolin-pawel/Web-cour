@@ -1,7 +1,7 @@
 <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 
 <!-- page -->
-<main class="relative  w-full bg-black bg-opacity-80">
+<main class="relative rounded-lg w-full bg-black bg-opacity-80">
     <!-- component -->
     <div class="p-6" x-data="app">
         <!-- header -->
@@ -14,23 +14,26 @@
             class=" bg-black w-3/5  mx-auto max-w-sm border-4 border-red-700 rounded-xl p-8  text-center">
 
             <!-- login content -->
-            <div x-show="!isLoginPage" class="space-y-4">
+            <form x-show="!isLoginPage" class="space-y-4" (ngSubmit)="onSubmit()">
                 <header class="mb-3 text-2xl font-bold text-white">Вход</header>
                 <div class="w-full rounded-lg bg-gray-50 px-4 ring-2 ring-gray-200 focus-within:ring-red-500">
-                    <input type="text" placeholder="Электронная почта"
+                    <input type="text" required placeholder="Электронная почта" [(ngModel)]="email" name="username"
                         class="my-3 w-full border-none bg-transparent outline-none focus:outline-none" />
                 </div>
                 <div
                     class="flex w-full items-center space-x-2 rounded-lg bg-gray-50 px-4 ring-2 ring-gray-200 focus-within:ring-red-500">
-                    <input type="password" placeholder="Пароль"
+                    <input type="password" required placeholder="Пароль" [(ngModel)]="password"  name="password"
                         class="my-3 w-full border-none bg-transparent outline-none" />
 
                 </div>
-                <button  routerLink="/account" routerLinkActive="active-link"
+                <!-- routerLink="/account" routerLinkActive="active-link" -->
+                <button
+
+                  type="submit"
                     class="select-none w-4/5 rounded-lg bg-red-600 py-3 px-4 text-center align-middle font-sans text-xl  font-bold text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
                     Войти
                 </button>
-            </div>
+              </form>
             <p class="text-white"> Нет аккаунта? <a routerLink="/registration" routerLinkActive="active-link">Зарегиструйтесь.</a></p>
 
         </section>

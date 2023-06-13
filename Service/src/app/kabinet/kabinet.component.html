@@ -1,12 +1,15 @@
 <div class="flex flex-col  bg-gray-100">
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <div class="mb-4">
+    <div class="mb-4 flex flex-row">
       <h1 class="text-2xl font-bold text-gray-700">Личный кабинет</h1>
+      <button (click)="logouts()" class="ml-auto middle w-32 my-auto none center rounded-lg bg-white border-red-600 border-2 py-3 px-6 font-sans text-xs font-bold uppercase text-black shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      data-ripple-light="true">Выйти</button>
     </div>
     <div class="mb-4">
       <h2 class="text-xl font-bold text-gray-700">Информация о клиенте</h2>
-      <p class="text-gray-700">Имя: Иванов Иван</p>
-      <p class="text-gray-700">Телефон: +7 (999) 123-45-67</p>
+      <p class="text-gray-700">{{user.surname}} {{user.name}}</p>
+      <p class="text-gray-700">E-mail: {{user.email}}</p>
+      <p class="text-gray-700">Телефон: {{user.phonenumber}}</p>
     </div>
     <div>
       <h1 class="text-2xl font-bold text-gray-700"> История посещений</h1>
@@ -16,21 +19,28 @@
             <th class="px-4 py-2 text-left text-gray-700 font-bold">Дата посещения</th>
             <th class="px-4 py-2 text-left text-gray-700 font-bold">Сумма</th>
             <th class="px-4 py-2 text-left text-gray-700 font-bold">Чек</th>
-            <th class="px-4 py-2 text-left text-gray-700 font-bold">Детали</th>
+            <th class="px-4 py-2 text-left text-gray-700 font-bold">Статус</th>
+            <th class="px-4 py-2 text-left text-gray-700 font-bold">Действия </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let req of user.requests">
           <tr>
-            <td class="border px-4 py-2 text-gray-700">01.01.2022</td>
-            <td class="border px-4 py-2 text-gray-700">3400 руб.</td>
-            <td class="border px-4 py-2 text-blue-500"><a class="underline underline-offset-4">АРТ№090990949864.xlsx</a></td>
-            <td class="border px-4 py-2 text-gray-700">Детали по заказу</td>
-          </tr>
-          <tr>
-            <td class="border px-4 py-2 text-gray-700">02.01.2022</td>
-            <td class="border px-4 py-2 text-gray-700">2800 руб.</td>
-            <td class="border px-4 py-2 text-blue-500"><a class="underline underline-offset-4">АРТ№090990949864.xlsx</a></td>
-            <td class="border px-4 py-2 text-gray-700">Детали по заказу</td>
+            <td class="border px-4 py-2 text-gray-700">{{formatRussianDate(req.stdate)}}</td>
+            <td class="border px-4 py-2 text-gray-700">{{req.summa}} руб.</td>
+            <td class="border px-4 py-2 text-gray-700"><a >АРТ№{{req.id}}</a></td>
+            <td class="border px-4 py-2 text-gray-700">{{(req.status.status)}} </td>
+            <td class="border w-2/12 px-4 py-2 text-gray-700">
+              <div *ngIf="checkStatus(req.status.status)" class="flex">
+              <button class="select-none mx-auto h-10 justify-center  rounded-lg bg-red-600  px-4 text-center align-middle font-sans text-lg  font-bold text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+              Скачать отчёт</button>
+              </div>
+              <div *ngIf="!checkStatus(req.status.status)" class="flex flex-row">
+              <button class="select-none mr-1 h-10 justify-center  rounded-lg bg-red-600  px-4 text-center align-middle font-sans text-lg font-bold   text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                Оплатить</button>
+                <button class="mx-auto align-middle h-10 my-auto none center rounded-lg bg-white border-red-600 border-2  px-4 font-sans text-lg   text-black shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                 Отменить</button>
+                </div>
+            </td>
           </tr>
         </tbody>
       </table>

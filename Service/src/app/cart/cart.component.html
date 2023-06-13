@@ -1,46 +1,48 @@
-<div>
-<table class="table-fixed w-full">
-  <thead>
+<div *ngIf="cartItems.length != 0 || cartServ.length != 0; else emptyCart">
+<table  class="table-fixed w-full">
+  <thead >
       <tr>
+
           <th class="w-1/4 px-4 py-2">Название</th>
           <th class="w-1/4 px-4 py-2">Характеристика</th>
           <th class="w-1/4 px-4 py-2">Количество(шт.)</th>
           <th class="w-1/4 px-4 py-2">Итоговая стоимость</th>
+          <th class="w-5"></th>
       </tr>
   </thead>
-  <tbody>
-      <tr>
-          <td class="border px-4 py-2">Товар 1</td>
-          <td class="border px-4 py-2">Характеристика 1</td>
-          <td class="border px-4 py-2"><input type="number" min="0" value="2" class="border border-red-600 rounded-md px-1 w-16"> </td>
-          <td class="border px-4 py-2">200 руб.</td>
-      </tr>
-      <tr>
-          <td class="border px-4 py-2">Товар 2</td>
-          <td class="border px-4 py-2">Характеристика 2</td>
-          <td class="border px-4 py-2"><input type="number" min="0" value="3" class="border border-red-600 rounded-md px-1 w-16"> </td>
-          <td class="border px-4 py-2">600 руб.</td>
-      </tr>
-      <tr>
-          <td class="border px-4 py-2">Товар 3</td>
-          <td class="border px-4 py-2">Характеристика 3</td>
-          <td class="border px-4 py-2"><input type="number" min="0" value="2" class="border border-red-600 rounded-md px-1 w-16"> </td>
-          <td class="border px-4 py-2">400 руб.</td>
-      </tr>
-      <tr>
-        <td class="border px-4 py-2">Услуга 1</td>
-        <td class="border px-4 py-2"> — </td>
-        <td class="border px-4 py-2"><input type="number" min="0" value="1" class="border border-red-600 rounded-md px-1 w-16"> </td>
-        <td class="border px-4 py-2">1100 руб.</td>
-    </tr>
+  <tbody *ngFor="let item of cartItems">
+    <tr>
+
+      <td class="border px-4 py-2">{{item.name}} {{item.maker}}</td>
+      <td class="border px-4 py-2">Радиус: {{item.radius}} Ширина: {{item.height}}</td>
+      <td class="border px-4 py-2"><input type="number" min="0" max="{{item.count}}" [(ngModel)]="item.countinorder" (ngModelChange)="recount()"  value="1"  class="border border-red-600 rounded-md px-1 w-16"> </td>
+      <td class="border px-4 py-2">{{item.countinorder * item.cost }} руб.</td>
+      <td><button (click)="drop(item)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+  </tr>
+  </tbody>
+  <tbody *ngFor="let item of cartServ">
+    <tr>
+
+      <td class="border px-4 py-2">{{item.name}}</td>
+      <td class="border px-4 py-2">Услуга</td>
+      <td class="border px-4 py-2"><input type="number" min="0" [(ngModel)]="item.countinorder" (ngModelChange)="recount()"  value="1" class="border border-red-600 rounded-md px-1 w-16"> </td>
+      <td class="border px-4 py-2">{{item.countinorder * item.cost }} руб.</td>
+      <td><button (click)="dropS(item)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+  </tr>
   </tbody>
 </table>
 
 <div class="flex justify-end mt-4">
-  <p class="mr-2">Итоговая стоимость: 2300 руб.</p>
+  <p class="mr-2">Итоговая стоимость: {{finalCost}} руб.</p>
 </div>
 
 <div class="flex justify-end mt-4">
-  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded">Оформить заявку</button>
+  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded">Перейти к оформлению</button>
 </div>
 </div>
+<ng-template #emptyCart>
+  <div class="flex flex-col w-1/5 justify-center m-auto rounded-lg border-black  mt-2 p-3 border-2">
+  <h1 class="text-2xl text-center mb-3">Корзина пуста</h1>
+  <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded" routerLink="/home" routerLinkActive="active-link">Перейти в каталог</button>
+  </div>
+</ng-template>

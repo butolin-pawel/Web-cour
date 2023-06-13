@@ -1,23 +1,28 @@
 <div class="p-4">
 
-  <h1 class="text-center mb-1 text-3xl">Создание заявки </h1>
-  <form class="max-w-sm mx-auto bg-red-600 rounded p-5">
+  <h1 class="text-center mb-1 font-bold text-4xl">Срочная заявка</h1>
+  <div class="container mx-auto p-4 border-2 border-red-700 rounded-lg  w-1/3 bg-red-600">
+    <div class="bg-white shadow-md rounded-lg overflow-hidden mb-6">
+      <h1 class="text-2xl font-bold p-4">Выберите необходимую услугу</h1>
+      <div class="divide-y divide-gray-300 overflow-y-scroll h-96">
+        <div *ngFor="let serv of servs" class="flex items-center justify-between p-4">
+          <div>
+            <h2 class="text-lg font-semibold">{{serv.name}}</h2>
+            <p class="text-gray-600">Стоимость: {{serv.cost}}руб.</p>
+          </div>
+          <input [(ngModel)]="serv.selected" (ngModelChange)="add(serv)" type="checkbox" class="text-red-700 border-2 border-red-700 form-checkbox bg-red-700 h-5 w-5 ">
+        </div>
 
-      <div class="mb-4">
-          <label class="block text-white font-bold mb-2" for="datepicker">
-              Время посещения
-          </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="datepicker" type="datetime-local" placeholder="Выберите дату">
       </div>
+    </div>
+
 
       <div class="mb-4">
           <label class="block text-white font-bold mb-2" for="car_type">
               Тип автомобиля
           </label>
-          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="car_type">
-              <option>Легковой</option>
-              <option>Грузовой</option>
-              <option>Автобус</option>
+          <select [(ngModel)]="tyid"  name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="car_type">
+            <option *ngFor="let cartype of tyList" value="{{cartype.id}}" >{{cartype.type}}</option>
           </select>
       </div>
 
@@ -25,33 +30,28 @@
           <label class="block text-white font-bold mb-2" for="wheel_radius">
               Параметры колес
           </label>
-          <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" id="wheel_radius">
-              <option>11R</option>
-              <option>12R</option>
-              <option>13R</option>
-              <option>14R</option>
-              <option>15R</option>
-              <option>16R</option>
-              <option>17R</option>
-              <option>18R</option>
-              <option>19R</option>
-              <option>20R</option>
-              <option>21R</option>
-              <option>22R</option>
+          <select  [(ngModel)]="radid"  name="radiusid"   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline" id="wheel_radius">
+            <option *ngFor="let radius of radiuces" value="{{radius.id}}" >{{radius.radius}}</option>
           </select>
       </div>
-
+      <div class="mb-4">
+        <label class="block text-white font-bold mb-2" for="datepicker">
+            Время записи
+        </label>
+        <input [(ngModel)]="newReq.stdate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="datepicker" type="datetime-local" placeholder="Выберите дату" required>
+    </div>
       <div class="mb-4">
           <label class="block text-white font-bold mb-2" for="total_cost">
               Итоговая стоимость
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total_cost" type="text" readonly>
+          <input [(ngModel)]="costdisplay"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="total_cost" type="text" readonly>
       </div>
 
       <div class="flex items-center justify-between">
-          <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+          <button class="bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+          (click)="createRequest()">
               Отправить заявку
           </button>
       </div>
-  </form>
+    </div>
 </div>
