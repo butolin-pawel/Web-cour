@@ -4,6 +4,10 @@ import { CartService } from '../services/cart.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Service } from '../Class/service';
 import { delay } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -14,7 +18,8 @@ export class CartComponent {
   cartServ : Service[] = [];
   faTrash = faTrash;
   finalCost : number = 0;
-  constructor(private cartService: CartService) {
+  bsModalRef?: BsModalRef;
+  constructor(private cartService: CartService, private auth : AuthService,private router: Router, private modalService: BsModalService) {
     this.cartItems = this.cartService.cartItems;
     this.cartServ = cartService.cartServ;
     this.cartItems.forEach(element => {
@@ -57,5 +62,21 @@ export class CartComponent {
   show(it :any){
     console.log(it);
 
+  }
+  toCreateRequest(){
+    this.auth.validateToken().subscribe((res) =>{
+      if(res)
+      {
+        this.router.navigate(['/request']);
+      }
+      else{
+        const modalOptions: ModalOptions = {
+          initialState:{},
+          class: 'modal-dialog-centered'
+        }
+        LoginComponent.change();
+        this.bsModalRef = this.modalService.show(LoginComponent,modalOptions);
+      }
+  });
   }
 }

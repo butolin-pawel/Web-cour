@@ -42,6 +42,24 @@ public class Request {
 
     @OneToMany(mappedBy = "request")
     private Set<Cart_service> cart_services;
+    @OneToMany(mappedBy = "request")
+    private Set<Cart_product> cart_products;
+
+    public Set<Cart_product> getCart_products() {
+        return cart_products;
+    }
+
+    public void setCart_products(Set<Cart_product> cart_products) {
+        this.cart_products = cart_products;
+    }
+
+    public Set<Cart_service> getCart_services() {
+        return cart_services;
+    }
+
+    public void setCart_services(Set<Cart_service> cart_services) {
+        this.cart_services = cart_services;
+    }
 
     public Long getId() {
         return id;

@@ -3,6 +3,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { Product } from '../Class/product';
 import { ProductService } from '../services/product.service';
 import { CartService } from '../services/cart.service';
+import { ProductRadius } from '../Class/product-radius';
 @Component({
   selector: 'app-goods-catalog',
   templateUrl: './goods-catalog.component.html',
@@ -17,7 +18,6 @@ export class GoodsCatalogComponent implements OnInit {
   ngOnInit(): void {
       this.productService.getAll().subscribe((response) =>{
           this.goods = response;
-          console.log(this.goods);
       })
 
 
@@ -28,10 +28,10 @@ export class GoodsCatalogComponent implements OnInit {
   addToCart(good :Product){
     this.cartService.addToCart(good,1);
   }
-  radiuslist(rad : JSON[]){
+  radiuslist(rad : ProductRadius[]){
     let radiuses :string ="";
-      rad.forEach((element :JSON) =>{
-         radiuses += Object.entries(element)[2][1]['radius'] + ' ';
+      rad.forEach((element) =>{
+         radiuses += element.radius.radius + ' ';
       })
     return radiuses;
   }

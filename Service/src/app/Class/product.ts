@@ -1,12 +1,13 @@
+import { ProductRadius } from "./product-radius";
+
 export class Product {
   id! : number;
   name! : string;
   maker! : string;
-  radius! : string;
+  radius! : ProductRadius;
   height!:string;
   characters! : string;
-  count! : number;
   cost! : number;
-  radiuses! : JSON[];
+  radiuses! : ProductRadius[];
   countinorder! : number;
 }

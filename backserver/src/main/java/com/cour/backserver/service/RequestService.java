@@ -4,6 +4,7 @@ import com.cour.backserver.entity.Request;
 import com.cour.backserver.entity.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RequestService {
@@ -11,5 +12,5 @@ public interface RequestService {
     void saveRequest(Request request);
     void payRequest(Request request);
     void cancelRequest(Request request);
-    List<Request> getBetweenDate(LocalDate selday);
+    List<Request> getBetweenDate(LocalDateTime selday);
 }

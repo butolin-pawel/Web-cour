@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { Radius } from '../Class/radius';
+import { ProductRadius } from '../Class/product-radius';
 
 @Component({
   selector: 'app-good-info',
@@ -16,15 +17,17 @@ export class GoodInfoComponent {
   radiusi : Radius[] = [];
   currRad! : number;
   countes : number[] = [];
+  typesRad : ProductRadius[] = [];
   maxCount : number = 1;
   constructor(private productService : ProductService, private route : ActivatedRoute, private cartService :CartService){
     this.good = new Product();
       productService.getById(this.route.snapshot.params['id']).subscribe(
         (responce) => {
           this.good = responce;
-          this.good.radiuses.forEach((element :JSON) =>{
-            this.countes.push(Object.entries(element)[3][1]);
-             this.radiusi.push(Object.entries(element)[2][1]);
+          this.good.radiuses.forEach((element) =>{
+            this.typesRad.push(element);
+            this.countes.push(element.count);
+             this.radiusi.push(element.radius);
          });
 
          this.currRad = this.radiusi[0].id;
@@ -44,10 +47,9 @@ export class GoodInfoComponent {
 
   }
   addToCart(good :Product){
-    this.radiusi.forEach((element)  =>{
-      if(element.id == this.currRad){
-      good.radius = element.radius;
-      good.count = this.maxCount;
+    this.typesRad.forEach((element)  =>{
+      if(element.radius.id == this.currRad){
+      good.radius = element;
       }
     })
 

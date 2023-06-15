@@ -3,6 +3,8 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../Class/user';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { RequestService } from '../services/request.service';
+import { Request } from '../Class/request';
 
 @Component({
   selector: 'app-kabinet',
@@ -11,7 +13,7 @@ import * as moment from 'moment';
 })
 export class KabinetComponent implements OnInit{
   user! : User;
-  constructor(private auth :AuthService, private router: Router){
+  constructor(private auth :AuthService, private router: Router,private reqServ : RequestService){
     this.user = new User();
   }
   ngOnInit(): void {
@@ -48,5 +50,24 @@ export class KabinetComponent implements OnInit{
     this.auth.resetToken();
     this.router.navigate(['/login']);
   }
+  pay(req : Request){
+    this.reqServ.payFor(req).subscribe(()=>{
+      this.auth.getUser().subscribe(responce =>{
 
+        this.user = responce;
+
+
+    })
+    })
+  }
+  cancelReq(req : Request){
+    this.reqServ.cancel(req).subscribe(()=>{
+      this.auth.getUser().subscribe(responce =>{
+
+        this.user = responce;
+
+
+    })
+    })
+  }
 }

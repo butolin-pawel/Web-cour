@@ -5,9 +5,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cart_service")
+@Table(name = "cart_product")
 @NoArgsConstructor
-public class Cart_service {
+public class Cart_product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -16,9 +16,15 @@ public class Cart_service {
     @Column(name = "request")
     private Integer request;
 
-    @JoinColumn(name = "serv")
+    @JoinColumn(name = "product")
     @ManyToOne
-    private Service service;
+    private Product product;
+
+    @Column(name = "count")
+    private Integer count;
+
+    @Column(name = "productradius")
+    private Integer productradius;
 
     @Column(name = "cost")
     private Double cost;
@@ -39,12 +45,28 @@ public class Cart_service {
         this.request = request;
     }
 
-    public Service getService() {
-        return service;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getProductradius() {
+        return productradius;
+    }
+
+    public void setProductradius(Integer productradius) {
+        this.productradius = productradius;
     }
 
     public Double getCost() {

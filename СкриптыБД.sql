@@ -39,7 +39,7 @@
         client integer not null,
         startdate timestamp without time zone not null,
         enddate timestamp without time zone not null,
-        summ numeric(6,2),
+        summ numeric(8,2),
         car_type integer not null,
         wheel_radius integer not null,
         status integer not null default '1',
@@ -52,7 +52,7 @@
         id serial not null primary key,
         name varchar(40) not null,
         description text null,
-        cost numeric(6,2) not null CHECK (cost > 0.0 )
+        cost numeric(8,2) not null CHECK (cost > 0.0 )
     );
     CREATE TABLE product(
         id serial not null primary key,
@@ -62,7 +62,7 @@
         height varchar(5) not null,
         characters json not null,
         
-        cost numeric(6,2) not null CHECK (cost > 0.0 ),
+        cost numeric(8,2) not null CHECK (cost > 0.0 ),
         
     );
     CREATE TABLE product_radius(
@@ -77,7 +77,7 @@
         id serial not null primary key,
         request integer not null,
         serv integer not null,
-        cost numeric(6,2) not null,
+        cost numeric(8,2) not null,
         CONSTRAINT FK foreign key(request) REFERENCES request(id) ON UPDATE CASCADE ON DELETE CASCADE,
         CONSTRAINT FK1 foreign key(serv) REFERENCES service(id) ON UPDATE CASCADE ON DELETE NO ACTION
     );
@@ -85,8 +85,9 @@
         id serial not null primary key,
         request integer not null,
         product integer not null,
+        productradius integer not null;
         count integer not null,
-        cost numeric(6,2) not null,
+        cost numeric(8,2) not null,
         CONSTRAINT FK foreign key(request) REFERENCES request(id) ON UPDATE CASCADE ON DELETE CASCADE,
         CONSTRAINT FK1 foreign key(product) REFERENCES product(id) ON UPDATE CASCADE ON DELETE NO ACTION
     );

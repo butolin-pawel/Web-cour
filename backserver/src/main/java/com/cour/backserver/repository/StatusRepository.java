@@ -8,4 +8,5 @@ import java.util.Map;
 public interface StatusRepository extends CrudRepository<Status,Long> {
 
     Status getByStatus(String status);
+
 }

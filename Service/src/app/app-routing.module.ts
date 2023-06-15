@@ -11,6 +11,7 @@ import { QuicklyRequestComponent } from './quickly-request/quickly-request.compo
 import { KabinetComponent } from './kabinet/kabinet.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GoodInfoComponent } from './good-info/good-info.component';
+import { RequestComponent } from './request/request.component';
 
 const routes: Routes = [
  { path: 'timing', component: TimingComponent},
@@ -34,6 +35,8 @@ const routes: Routes = [
   {path:'quickly', component:QuicklyRequestComponent},
   {path:'account', component:KabinetComponent},
   {path:'contacts', component:ContactsComponent},
+  {path:'request', component:RequestComponent},
+
 ];
 
 @NgModule({

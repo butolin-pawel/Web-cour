@@ -2,18 +2,29 @@ package com.cour.backserver.service;
 
 import com.cour.backserver.entity.Radius;
 import com.cour.backserver.entity.Type;
+import com.cour.backserver.repository.StatusRepository;
+import com.cour.backserver.repository.TypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.*;
+import java.util.Objects;
+
 @Service
 public class TimeCounterService {
+    private final TypeRepository typeRepository;
+@Autowired
+    public TimeCounterService(TypeRepository typeRepository) {
+        this.typeRepository = typeRepository;
+    }
+
     public LocalDateTime countEndTime(LocalDateTime stdt, Radius rs, Type ty){
         LocalDateTime enddate = stdt;
         double minutes = 15;
 
         byte wheelcnt = 4;
-        if(ty.getType() != "Легковой"){
+        if(ty.getId() != typeRepository.getByType("Р›РµРіРєРѕРІРѕР№").getId()){
            enddate =  enddate.plusMinutes(20);
-           if(ty.getType() == "Прицеп"){
+           if(ty.getId() == typeRepository.getByType("РџСЂРёС†РµРї").getId()){
                wheelcnt = 2;
            }
         }

@@ -1,12 +1,17 @@
 <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
 
 <!-- page -->
-<main class="relative rounded-lg w-full bg-black bg-opacity-80">
+
+<main  class="rounded-lg  bg-black " [ngClass]="{'fixed right-1/4 top-1/4 w-1/2 items-center bg-opacity-70':retBo(),'w-full relative bg-opacity-80':!retBo()}">
     <!-- component -->
     <div class="p-6" x-data="app">
-        <!-- header -->
-        <header class="flex  justify-between">
 
+        <!-- header -->
+        <header class="flex flex-col justify-between">
+          <div *ngIf="retBo()" class="flex flex-row mb-4">
+            <h1 class="text-white ml-auto text-center font-bold text-xl">Перед отправкой заявки войдите</h1>
+            <button class="ml-auto text-white text-2xl" (click)="close()"><fa-icon [icon]="faCross"></fa-icon> </button>
+          </div>
 
 
 
@@ -34,7 +39,7 @@
                     Войти
                 </button>
               </form>
-            <p class="text-white"> Нет аккаунта? <a routerLink="/registration" routerLinkActive="active-link">Зарегиструйтесь.</a></p>
+            <p class="text-white"> Нет аккаунта? <a (click)="gotoreg()">Зарегиструйтесь.</a></p>
 
         </section>
 

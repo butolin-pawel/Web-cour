@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { TokenInterceptor } from './Class/http-interceptor';
 import { AuthService } from './services/auth.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { RequestComponent } from './request/request.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 // import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 @NgModule({
@@ -38,7 +40,8 @@ import { AuthService } from './services/auth.service';
     KabinetComponent,
     ContactsComponent,
     FooterComponent,
-    GoodInfoComponent
+    GoodInfoComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     // FlexLayoutModule,
     // CdkVirtualScrollableElement,
+     ModalModule.forRoot()
   ],
   providers: [
     AuthService
