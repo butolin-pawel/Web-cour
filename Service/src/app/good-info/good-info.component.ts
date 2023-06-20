@@ -6,12 +6,14 @@ import { CartService } from '../services/cart.service';
 import { Radius } from '../Class/radius';
 import { ProductRadius } from '../Class/product-radius';
 
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-good-info',
   templateUrl: './good-info.component.html',
   styleUrls: ['./good-info.component.css']
 })
 export class GoodInfoComponent {
+  faCartPlus = faCartPlus;
   good : Product;
   count : number = 1 ;
   radiusi : Radius[] = [];

@@ -23,6 +23,7 @@ import { TokenInterceptor } from './Class/http-interceptor';
 import { AuthService } from './services/auth.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RequestComponent } from './request/request.component';
+import  { Ng5SliderModule } from 'ng5-slider';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 // import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 @NgModule({
@@ -49,6 +50,7 @@ import { RequestComponent } from './request/request.component';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
+    Ng5SliderModule,
     // FlexLayoutModule,
     // CdkVirtualScrollableElement,
      ModalModule.forRoot()

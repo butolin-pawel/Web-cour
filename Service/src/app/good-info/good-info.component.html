@@ -1,7 +1,10 @@
 <section class="text-gray-900 body-font overflow-hidden">
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://remzonamsk.ru/wp-content/uploads/2018/06/tire1.jpg">
+      <div class="w-1/2">
+      <img alt="ecommerce" class="mx-auto lg:h-auto max-h-[452px] object-cover object-center rounded"
+      src="assets/{{good.maker}}.jpg">
+    </div>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{good.name}}</h1>
 
@@ -35,7 +38,7 @@
         <div class="flex flex-row  ">
           <span class="title-font font-medium text-2xl text-gray-900 mr-auto">{{good.cost}} руб.</span>
           <p class="pt-1">Количество <input [(ngModel)]="count" type="number" min="0" value="0" max="{{maxCount}}"  class=" border-2 mr-4  border-red-600 rounded-md px-1 w-16"></p>
-          <button (click)="addToCart(good)" class=" middle none center rounded-lg bg-red-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Добавить в корзину</button>
+          <button (click)="addToCart(good)" class=" middle none center rounded-lg bg-red-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">Добавить в корзину <fa-icon [icon]="faCartPlus"></fa-icon></button>
         </div>
       </div>
     </div>

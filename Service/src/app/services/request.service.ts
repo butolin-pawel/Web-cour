@@ -23,4 +23,7 @@ export class RequestService {
   timing(date : Date){
     return this.http.post(this.URL+'/times',date);
   }
+  download(req : Request){
+    return this.http.post(this.URL+'/report',req,{ responseType: 'blob' });
+  }
 }

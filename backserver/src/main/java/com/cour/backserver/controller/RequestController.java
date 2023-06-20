@@ -4,11 +4,22 @@ import com.cour.backserver.entity.*;
 import com.cour.backserver.repository.ProductRadiusRepository;
 import com.cour.backserver.repository.UserRepository;
 import com.cour.backserver.service.EmailService;
+import com.cour.backserver.service.ReportService;
 import com.cour.backserver.service.RequestService;
-import org.hibernate.type.LocalDateType;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.TextStyle;
@@ -21,12 +32,14 @@ public class RequestController {
     private final UserRepository userRepository;
     private final EmailService emailService;
     private final ProductRadiusRepository productRadiusRepository;
+    private final ReportService reportService;
     @Autowired
-    public RequestController(RequestService requestService, UserRepository userRepository, EmailService emailService, ProductRadiusRepository productRadiusRepository) {
+    public RequestController(RequestService requestService, UserRepository userRepository, EmailService emailService, ProductRadiusRepository productRadiusRepository, ReportService reportService) {
         this.requestService = requestService;
         this.userRepository = userRepository;
         this.emailService = emailService;
         this.productRadiusRepository = productRadiusRepository;
+        this.reportService = reportService;
     }
 
     @PostMapping("/req")
@@ -79,5 +92,17 @@ public class RequestController {
         }
         Collections.reverse(times);
         return times;
+    }
+    @PostMapping("/req/report")
+    public ResponseEntity<Resource> downloadFile(@RequestBody Request request) throws IOException {
+
+            InputStreamResource resource = reportService.generateReport(request);
+
+            // Возвращаем ресурс в ответе сервера
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=АРТ.xlsx")
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .body(resource);
+
     }
 }
