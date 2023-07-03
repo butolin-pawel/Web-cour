@@ -43,7 +43,7 @@
         <label class="block text-white font-bold mb-2" for="datepicker">
             Время записи
         </label>
-        <input [(ngModel)]="newReq.stdate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="datepicker" type="datetime-local" placeholder="Выберите дату" required>
+        <input [(ngModel)]="newReq.stdate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="datepicker" type="datetime-local" min="{{today}}" max="{{next2weeek}}" placeholder="Выберите дату" required>
     </div>
       <div class="mb-4">
           <label class="block text-white font-bold mb-2" for="total_cost">

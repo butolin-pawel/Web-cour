@@ -25,7 +25,7 @@
 
       <td class="border px-4 py-2">{{item.name}}</td>
       <td class="border px-4 py-2">Услуга</td>
-      <td class="border px-4 py-2"><input type="number" min="0" [(ngModel)]="item.countinorder" (ngModelChange)="recount()"  value="1" class="border border-red-600 rounded-md px-1 w-16"> </td>
+      <td class="border px-4 py-2"><input type="number" min="0" max="1" [(ngModel)]="item.countinorder" (ngModelChange)="recount()"  value="1" class="border border-red-600 rounded-md px-1 w-16"> </td>
       <td class="border px-4 py-2">{{item.countinorder * item.cost }} руб.</td>
       <td><button (click)="dropS(item)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
   </tr>
@@ -33,7 +33,7 @@
 </table>
 
 <div class="flex justify-end mt-4">
-  <p class="mr-2">Итоговая стоимость: {{finalCost}} руб.</p>
+  <p class="mr-2">Итоговая стоимость: {{finalCost.toFixed(2)}} руб.</p>
 </div>
 
 <div class="flex justify-end mt-4">

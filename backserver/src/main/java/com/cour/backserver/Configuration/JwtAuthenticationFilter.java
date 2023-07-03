@@ -39,8 +39,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-//        String username ="example@email.com";
-//        String password = "123";
         if(username == null || password == null)
             return null;
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password);
@@ -57,19 +55,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = jwtTokenProvider.generateToken(authResult);
         response.addHeader("Authorization", "Bearer " + token);
         response.setStatus(HttpServletResponse.SC_OK);
-
-        // Создание объекта ответа
         String responseBody = token;
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonBody = objectMapper.writeValueAsString(responseBody);
-
-        // Установка Content-Type заголовка для указания формата JSON
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-
-        // Запись тела ответа
         response.getWriter().write(jsonBody);
-
-        // Отправка ответа клиенту
         response.getWriter().flush();
     }
 }

@@ -10,6 +10,7 @@ import { AuthService } from '../services/auth.service';
 import { LoginComponent } from '../login/login.component';
 import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap/modal'
 import { CartServ } from '../Class/cart-serv';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-quickly-request',
   templateUrl: './quickly-request.component.html',
@@ -30,7 +31,7 @@ export class QuicklyRequestComponent implements OnInit {
   bsModalRef?: BsModalRef;
   today! : string;
   next2weeek! : string;
-  constructor(private radiusServ : RadiusService,private servService:ServiceService, private reqService : RequestService, private auth : AuthService, private modalService: BsModalService){
+  constructor(private radiusServ : RadiusService,private router: Router,private servService:ServiceService, private reqService : RequestService, private auth : AuthService, private modalService: BsModalService){
     this.newReq = new Request();
 
 
@@ -90,7 +91,7 @@ export class QuicklyRequestComponent implements OnInit {
                 this.newReq.cart_services.push(el);
               })
               this.reqService.createReq(this.newReq).subscribe(() =>{
-                //алерт о создании или навигация в лк
+                this.router.navigate(['/account']);
               });
             })
           })

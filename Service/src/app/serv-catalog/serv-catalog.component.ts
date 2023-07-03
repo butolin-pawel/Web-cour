@@ -3,6 +3,7 @@ import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { Service } from '../Class/service';
 import { ServiceService } from '../services/service.service';
 import { CartService } from '../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-serv-catalog',
   templateUrl: './serv-catalog.component.html',
@@ -11,7 +12,7 @@ import { CartService } from '../services/cart.service';
 export class ServCatalogComponent {
   faCartPlus =faCartPlus
   servs : Service[]=[];
-  constructor(private serviceService : ServiceService,private cartService: CartService){
+  constructor(private serviceService : ServiceService,private cartService: CartService,private toastr: ToastrService){
 
   }
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class ServCatalogComponent {
   }
 
   addToCart(good :Service){
+    this.toastr.success('Услуга добавлена в корзину', 'Успешно');
     this.cartService.addToCartS(good,1);
   }
 

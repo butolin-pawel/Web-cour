@@ -34,6 +34,7 @@ export class CartService {
   }
   clearCart() {
     this.cartItems = [];
+    this.cartServ = [];
     this.saveCart();
   }
 

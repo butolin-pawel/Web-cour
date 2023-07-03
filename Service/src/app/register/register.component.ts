@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   newClient : User = new User();
+  today! : string;
   constructor(private auth : AuthService,private router: Router){
-
+    this.today = new Date().toISOString().slice(0, 16);
   }
   reg(){
     this.auth.register(this.newClient).subscribe((response)=>{

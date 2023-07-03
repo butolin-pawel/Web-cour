@@ -12,6 +12,7 @@ import { ServiceService } from '../services/service.service';
 import { Request } from '../Class/request';
 import { CartService } from '../services/cart.service';
 import { CartProduct } from '../Class/cart-product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-request',
@@ -28,10 +29,14 @@ export class RequestComponent {
   costnum! : number;
   costdisplay = '0 руб.';
   bsModalRef?: BsModalRef;
-  constructor(private radiusServ : RadiusService,public cart : CartService,private servService:ServiceService, private reqService : RequestService, private auth : AuthService, private modalService: BsModalService){
+  today! : string;
+  next2weeek! : string;
+  constructor(private radiusServ : RadiusService,public cart : CartService,private router: Router,private servService:ServiceService, private reqService : RequestService, private auth : AuthService, private modalService: BsModalService){
     this.newReq = new Request();
   }
   ngOnInit(): void {
+    this.today = new Date().toISOString().slice(0, 16);
+    this.next2weeek = new Date(new Date().getTime() + (2 * 7 * 24 * 60 * 60 * 1000)).toISOString().slice(0, 16);
     this.radiusServ.getAllRadius().subscribe((responce) =>{
       this.radiuces=responce;
       this.radid = this.radiuces[0].id;
@@ -49,7 +54,7 @@ export class RequestComponent {
     this.cart.cartServ.forEach((elem)=>{
       this.costnum += elem.cost *elem.countinorder
     })
-    this.costdisplay = this.costnum + "руб."
+    this.costdisplay = this.costnum.toFixed(2) + "руб."
   }
 
   createRequest(){
@@ -86,7 +91,8 @@ export class RequestComponent {
                 this.newReq.cart_services.push(el);
               })
               this.reqService.createReq(this.newReq).subscribe(() =>{
-                //алерт о создании или навигация в лк
+                this.cart.clearCart();
+                this.router.navigate(['/account']);
               });
             })
           })

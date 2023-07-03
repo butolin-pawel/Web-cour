@@ -5,12 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { Radius } from '../Class/radius';
 import { ProductRadius } from '../Class/product-radius';
-
+import { ToastrService } from 'ngx-toastr';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-good-info',
   templateUrl: './good-info.component.html',
-  styleUrls: ['./good-info.component.css']
+  styleUrls: ['./good-info.component.css',]
 })
 export class GoodInfoComponent {
   faCartPlus = faCartPlus;
@@ -21,7 +21,7 @@ export class GoodInfoComponent {
   countes : number[] = [];
   typesRad : ProductRadius[] = [];
   maxCount : number = 1;
-  constructor(private productService : ProductService, private route : ActivatedRoute, private cartService :CartService){
+  constructor(private productService : ProductService, private route : ActivatedRoute, private cartService :CartService,private toastr: ToastrService){
     this.good = new Product();
       productService.getById(this.route.snapshot.params['id']).subscribe(
         (responce) => {
@@ -49,6 +49,7 @@ export class GoodInfoComponent {
 
   }
   addToCart(good :Product){
+    this.toastr.success('Товар добавлен в корзину', 'Успешно');
     this.typesRad.forEach((element)  =>{
       if(element.radius.id == this.currRad){
       good.radius = element;
@@ -56,6 +57,7 @@ export class GoodInfoComponent {
     })
 
     this.cartService.addToCart(good,this.count);
+
   }
   convertJson(jsonstr :string) {
 

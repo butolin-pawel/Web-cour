@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit{
   email : string = "";
   password : string = "";
   static isModal : boolean =false;
-  constructor(private auth : AuthService,private router: Router, public bsModalRef:BsModalRef){
+  constructor(private auth : AuthService,private router: Router, public bsModalRef:BsModalRef,private toastr: ToastrService){
   }
   ngOnInit(): void {
     this.auth.validateToken().subscribe((res) => {
@@ -28,10 +29,14 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/account']);
       else
       this.close();
-    }),(error: any) => {
+    },(error: any) => {
+      console.log("Езжии брат ошибка");
 
+      console.log(error);
 
-    };
+      this.toastr.error("Проверьте правильность данных","Ошибка входа");
+
+    });
   }
   retBo(){
     return LoginComponent.isModal;

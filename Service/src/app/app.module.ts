@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './catalog/catalog.component';
@@ -24,6 +24,7 @@ import { AuthService } from './services/auth.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RequestComponent } from './request/request.component';
 import  { Ng5SliderModule } from 'ng5-slider';
+import { ToastrModule } from 'ngx-toastr';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 // import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 @NgModule({
@@ -53,7 +54,9 @@ import  { Ng5SliderModule } from 'ng5-slider';
     Ng5SliderModule,
     // FlexLayoutModule,
     // CdkVirtualScrollableElement,
-     ModalModule.forRoot()
+     ModalModule.forRoot(),
+     ToastrModule.forRoot(),
+     BrowserAnimationsModule
   ],
   providers: [
     AuthService

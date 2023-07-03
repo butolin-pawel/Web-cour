@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { RequestService } from '../services/request.service';
 import { Request } from '../Class/request';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-kabinet',
@@ -13,7 +14,7 @@ import { Request } from '../Class/request';
 })
 export class KabinetComponent implements OnInit{
   user! : User;
-  constructor(private auth :AuthService, private router: Router,private reqServ : RequestService){
+  constructor(private auth :AuthService, private router: Router,private reqServ : RequestService,private toastr: ToastrService){
     this.user = new User();
   }
   ngOnInit(): void {
@@ -77,7 +78,7 @@ export class KabinetComponent implements OnInit{
       this.auth.getUser().subscribe(responce =>{
 
         this.user = responce;
-
+        this.toastr.success('Оплачено', 'Успешно');
 
     })
     })
