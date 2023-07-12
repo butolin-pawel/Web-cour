@@ -14,7 +14,7 @@
     <tr>
 
       <td class="border px-4 py-2">{{item.name}} {{item.maker}}</td>
-      <td class="border px-4 py-2">Радиус: {{item.radius.radius.radius}} Ширина: {{item.height}}</td>
+      <td class="border px-4 py-2">Радиус: {{item.radius.radiusNavigation.radius}} Ширина: {{item.height}}</td>
       <td class="border px-4 py-2"><input type="number" min="0" max="{{item.radius.count}}" [(ngModel)]="item.countinorder" (ngModelChange)="recount()"  value="1"  class="border border-red-600 rounded-md px-1 w-16"> </td>
       <td class="border px-4 py-2">{{item.countinorder * item.cost }} руб.</td>
       <td><button (click)="drop(item)"><fa-icon [icon]="faTrash"></fa-icon></button></td>

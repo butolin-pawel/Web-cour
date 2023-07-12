@@ -8,6 +8,6 @@ export class Product {
   height!:string;
   characters! : string;
   cost! : number;
-  radiuses! : ProductRadius[];
+  productRadii! : ProductRadius[];
   countinorder! : number;
 }

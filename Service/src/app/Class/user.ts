@@ -10,4 +10,6 @@ export class User {
   password! : string;
   email! :string;
   requests! : Request[];
+
+  inTableString = this.surname + ' ' + this.name + ' ' + this.phonenumber;
 }

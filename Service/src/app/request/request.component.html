@@ -13,7 +13,7 @@
         </div>
         <div *ngFor="let good of cart.cartItems" class="flex items-center justify-between p-4">
           <div>
-            <h2 class="text-lg font-semibold">{{good.name}} {{good.maker}} <label class="font-normal text-base">{{good.radius.radius.radius}}</label></h2>
+            <h2 class="text-lg font-semibold">{{good.name}} {{good.maker}} <label class="font-normal text-base">{{good.radius.radiusNavigation.radius}}</label></h2>
             <p class="text-gray-600">{{good.countinorder}}шт.</p>
             <p class="text-gray-600">Стоимость: {{good.cost}}руб.</p>
           </div>

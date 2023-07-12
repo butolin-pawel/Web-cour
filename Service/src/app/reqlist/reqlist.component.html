@@ -1,0 +1,128 @@
+<div class="flex flex-col">
+  <div class="p-4 flex flex-row">
+
+    <div class="flex h-72 mr-auto w-1/3 flex-col border-2 border-black rounded-lg">
+      <h2 class="text-2xl text-center font-bold mb-2">Поиск</h2>
+      <div class="relative px-2 h-10 mb-2 w-full min-w-[200px]">
+              <input [(ngModel)]="filterSurname"
+                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-600 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+              />
+              <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-red-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-red-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-red-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                  По фамилии
+              </label>
+              </div>
+      <div class="relative mb-auto px-2  h-10 w-full min-w-[200px]">
+              <input [(ngModel)]="filterNumber"
+                  class="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-600 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  placeholder=" "
+              />
+              <label class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-red-600 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-red-600 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-red-600 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                  По номеру телефона
+              </label>
+              </div>
+              <div class="flex flex-wrap mb-auto gap-2 px-2 my-4">
+      <button
+              (click)="Future()"
+              class="rounded-lg w-48 mx-auto bg-red-600 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              data-ripple-light="true"
+          >
+              Предстоящие
+          </button>
+      <button
+              (click)="Finish()"
+              class="rounded-lg w-48 mx-auto bg-red-600 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              data-ripple-light="true"
+          >
+              Завершённые
+          </button>
+              </div>
+      <button
+              (click)="Reset()"
+          class="rounded-lg mx-auto w-36 mb-4 bg-white border-red-600 border-2 py-3 px-5 font-sans text-xs font-bold uppercase text-black shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+          >
+
+          Сбросить
+          </button>
+    </div>
+    <button
+               routerLink="/admin/newrequest" routerLinkActive="active-link"
+              class="rounded-lg w-52 h-16  bg-red-600 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              data-ripple-light="true"
+          >
+              Новая заявка
+          </button>
+  </div>
+  <div class="flex-col">
+    <table class="table-auto w-full">
+        <thead>
+          <th class="px-4 py-2 text-left text-gray-700 font-bold w-3"></th>
+        <th class="px-4 py-2 text-left text-gray-700 font-bold">Клиент</th>
+        <th class="px-4 py-2 text-left text-gray-700 font-bold">Время посещения</th>
+        <th class="px-4 py-2 text-left text-gray-700 font-bold">Параметры автомобиля</th>
+        <th class="px-4 py-2 text-left text-gray-700 font-bold">Статус</th>
+        <th class="px-4 py-2 text-left text-gray-700 font-bold">Действия</th>
+      </thead>
+      <tbody *ngFor="let req of listRequest">
+        <tr >
+          <td><button (click)="drop(req)"><fa-icon [icon]="arrowdown"></fa-icon></button></td>
+          <td class="border text-left px-4 py-2 text-gray-700">{{req.clientNavigation.surname + ' ' + req.clientNavigation.name + ' ' +req.clientNavigation.phonenumber}}</td>
+          <td class="border px-4 py-2 text-gray-700">{{formatRussianDate(req.stdate)}}</td>
+          <td class="border px-4 py-2 text-gray-700">{{req.carTypeNavigation.type + ' '  + req.wheelRadiusNavigation.radius}}</td>
+          <td class="border px-4 py-2 text-gray-700">{{req.statusNavigation.status1}}</td>
+          <td class="border px-4 py-2 text-gray-700">
+            <div class="flex flex-row">
+              <button
+                (click)="accept(req)"
+                class="select-none mr-1 h-10 justify-center  rounded-lg bg-red-600  px-4 text-center align-middle font-sans text-lg font-bold   text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                Принять</button>
+                <button
+                (click)="cancelReq(req)"
+                class="mx-auto align-middle h-10 my-auto none center rounded-lg bg-white border-red-600 border-2  px-4 font-sans text-lg   text-black shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+                 Отменить</button>
+                </div>
+          </td>
+        </tr>
+          <tr class="border-y" *ngIf="req.info">
+            <td></td>
+            <td>Детали заявки</td>
+          </tr>
+          <tr class="border-y" *ngFor="let se of req.cartServices">
+            <td *ngIf="req.info"></td>
+            <td *ngIf="req.info">{{se.servNavigation.name}}</td>
+            <td *ngIf="req.info">1 шт.</td>
+            <td *ngIf="req.info">{{se.cost}} руб.</td>
+          </tr>
+          <tr class="border-y" *ngFor="let se of req.cartProducts">
+            <td *ngIf="req.info"></td>
+            <td *ngIf="req.info">{{se.productNavigation.name + ' '+ se.productNavigation.maker}}</td>
+            <td *ngIf="req.info">{{se.count}} шт.</td>
+            <td *ngIf="req.info">{{se.cost}} руб.</td>
+          </tr>
+          <tr class="border-y">
+            <td *ngIf="req.info"></td>
+            <td *ngIf="req.info"></td>
+            <td *ngIf="req.info"></td>
+            <td *ngIf="req.info" >Итого: {{req.summ}} руб.</td>
+
+          </tr>
+
+      </tbody>
+    </table>
+    <div *ngIf="listRequest.length == 0" class="mt-4 flex flex-row mx-auto text-3xl font-bold">
+
+        <h1>Заявок нет, попробуйте</h1>
+        <button
+      (click)="Reset()"
+      class="rounded-lg mx-2 w-32 h-10 bg-white border-red-600 border-2 py-3 px-5 font-sans text-xs font-bold uppercase text-black shadow-md shadow-red-600/20 transition-all hover:shadow-lg hover:shadow-red-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      data-ripple-light="true"
+      >
+
+      Сбросить
+      </button>
+      <h1>фильтр</h1>
+
+    </div>
+  </div>
+</div>

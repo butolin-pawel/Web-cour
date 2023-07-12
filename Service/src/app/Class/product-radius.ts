@@ -1,8 +1,10 @@
+import { Product } from "./product";
 import { Radius } from "./radius";
 
 export class ProductRadius {
   id! : number;
   product! : number;
-  radius! : Radius;
+  radiusNavigation! : Radius;
   count! : number;
+
 }

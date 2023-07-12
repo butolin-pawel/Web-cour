@@ -1,4 +1,4 @@
 export class Status {
   id! : number;
-  status! : string;
+  status1! : string;
 }

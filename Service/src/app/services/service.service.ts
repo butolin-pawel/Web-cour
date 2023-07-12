@@ -10,7 +10,7 @@ export class ServiceService {
   private URL: string;
 
   constructor(private http: HttpClient) {
-    this.URL = 'http://localhost:8082/services'
+    this.URL = 'https://localhost:7223/api/Product/services'
   }
   goods : Service[] = [];
   public getAll() : Observable<Service[]>{

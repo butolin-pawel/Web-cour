@@ -1,0 +1,51 @@
+<div class=" bg-black   w-2/3 p-6  fixed right-56 top-12  items-center bg-opacity-80">
+  <div  class="flex flex-row mb-4">
+    <h1 class="text-white ml-auto text-center font-bold text-xl">История заявок</h1>
+    <button class="ml-auto text-white text-2xl" (click)="close()"><fa-icon [icon]="faCross"></fa-icon> </button>
+  </div>
+  <div>
+    <p class="text-left text-lg text-white font-bold">Клиент {{client.surname}} {{client.name}}</p>
+    <p class="text-left text-lg text-white font-bold">Контактные данные {{client.phonenumber}} {{client.email}}</p>
+  </div>
+  <table class="table-auto w-full">
+    <thead>
+      <th class="px-4 py-2 text-left text-white font-bold w-3"></th>
+    <th class="px-4 py-2 text-left text-white font-bold">Время посещения</th>
+    <th class="px-4 py-2 text-left text-white font-bold">Параметры автомобиля</th>
+    <th class="px-4 py-2 text-left text-white font-bold">Статус</th>
+  </thead>
+  <tbody *ngFor="let req of listRequest">
+    <tr >
+      <td class="text-left text-lg text-white font-bold"><button (click)="drop(req)"><fa-icon [icon]="arrowdown"></fa-icon></button></td>
+      <td class="border px-4 py-2 text-white">{{formatRussianDate(req.stdate)}}</td>
+      <td class="border px-4 py-2 text-white">{{req.carTypeNavigation.type + ' '  + req.wheelRadiusNavigation.radius}}</td>
+      <td class="border px-4 py-2 text-white">{{req.statusNavigation.status1}}</td>
+
+    </tr>
+      <tr class="border-y" *ngIf="req.info">
+        <td></td>
+        <td class="text-left text-lg text-white font-bold">Детали заявки</td>
+      </tr>
+      <tr class="border-y" *ngFor="let se of req.cartServices">
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info"></td>
+        <td  class="text-left text-lg text-white font-bold" *ngIf="req.info">{{se.servNavigation.name}}</td>
+        <td  class="text-left text-lg text-white font-bold" *ngIf="req.info">1 шт.</td>
+        <td  class="text-left text-lg text-white font-bold" *ngIf="req.info">{{se.cost}} руб.</td>
+      </tr>
+      <tr class="border-y" *ngFor="let se of req.cartProducts">
+        <td class="text-left text-lg text-white font-bold"  *ngIf="req.info"></td>
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info">{{se.productNavigation.name + ' '+ se.productNavigation.maker}}</td>
+        <td  class="text-left text-lg text-white font-bold" *ngIf="req.info">{{se.count}} шт.</td>
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info">{{se.cost}} руб.</td>
+      </tr>
+      <tr class="border-y">
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info"></td>
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info"></td>
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info"></td>
+        <td class="text-left text-lg text-white font-bold" *ngIf="req.info" >Итого: {{req.summ}} руб.</td>
+
+      </tr>
+
+  </tbody>
+</table>
+</div>

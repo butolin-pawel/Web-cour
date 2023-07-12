@@ -29,6 +29,8 @@ export class GoodsCatalogComponent implements OnInit {
   }
   ngOnInit(): void {
       this.productService.getAll().subscribe((response) =>{
+        console.log(response);
+
         this.allGoods = response;
           this.displayGoods = response;
       })
@@ -44,7 +46,7 @@ export class GoodsCatalogComponent implements OnInit {
   radiuslist(rad : ProductRadius[]){
     let radiuses :string ="";
       rad.forEach((element) =>{
-         radiuses += element.radius.radius + ' ';
+         radiuses += element.radiusNavigation.radius + ' ';
       })
     return radiuses;
   }
@@ -89,9 +91,9 @@ export class GoodsCatalogComponent implements OnInit {
     }
     this.displayGoods = this.allGoods.filter((product) =>{
       let rad;
-      product.radiuses.forEach((elem)=>{
-        if(elem.radius.radius == this.selectedRadius)
-        rad = elem.radius.radius;
+      product.productRadii.forEach((elem)=>{
+        if(elem.radiusNavigation.radius == this.selectedRadius)
+        rad = elem.radiusNavigation.radius;
       })
       if(this.minCost > product.cost || this.maxCost < product.cost)
       return false;

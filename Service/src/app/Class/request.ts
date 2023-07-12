@@ -8,12 +8,19 @@ import { User } from "./user";
 export class Request {
   id! : number;
   client! : number;
+  clientNavigation! : User;
   stdate! : Date;
   enddate! : Date;
-  summa! : number;
+  summ! : number;
   type! : TypeCar;
   radius! : Radius;
-  status! : Status;
+  statusNavigation! : Status;
+  carTypeNavigation! : TypeCar;
+  wheelRadiusNavigation! : Radius;
   cart_services : CartServ[] = [];
   cart_products : CartProduct[] = [];
+
+  info : boolean = false;
+  cartServices : CartServ[] = [];
+  cartProducts : CartProduct[] = [];
 }

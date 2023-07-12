@@ -77,7 +77,7 @@ export class QuicklyRequestComponent implements OnInit {
       {
         this.auth.getUser().subscribe((res) => {
           this.newReq.client = res.id;
-          this.newReq.summa = this.costnum;
+          this.newReq.summ = this.costnum;
           this.radiusServ.getById(this.radid).subscribe((res)=>{
             this.newReq.radius =res;
             this.radiusServ.getByIdT(this.tyid).subscribe((res) =>{
@@ -87,7 +87,7 @@ export class QuicklyRequestComponent implements OnInit {
               this.selServ.forEach((element) =>{
                 let el = new CartServ();
                 el.cost = element.cost;
-                el.service = element;
+                el.service = element.id;
                 this.newReq.cart_services.push(el);
               })
               this.reqService.createReq(this.newReq).subscribe(() =>{

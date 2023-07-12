@@ -25,11 +25,16 @@ export class GoodInfoComponent {
     this.good = new Product();
       productService.getById(this.route.snapshot.params['id']).subscribe(
         (responce) => {
+          console.log(responce);
+
           this.good = responce;
-          this.good.radiuses.forEach((element) =>{
+
+          console.log(this.good);
+
+          this.good.productRadii.forEach((element) =>{
             this.typesRad.push(element);
             this.countes.push(element.count);
-             this.radiusi.push(element.radius);
+             this.radiusi.push(element.radiusNavigation);
          });
 
          this.currRad = this.radiusi[0].id;
@@ -51,7 +56,7 @@ export class GoodInfoComponent {
   addToCart(good :Product){
     this.toastr.success('Товар добавлен в корзину', 'Успешно');
     this.typesRad.forEach((element)  =>{
-      if(element.radius.id == this.currRad){
+      if(element.radiusNavigation.id == this.currRad){
       good.radius = element;
       }
     })

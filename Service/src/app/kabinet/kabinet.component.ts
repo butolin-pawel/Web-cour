@@ -23,8 +23,11 @@ export class KabinetComponent implements OnInit{
         if(res){
           this.auth.getUser().subscribe(responce =>{
 
-              this.user = responce;
 
+              this.user = responce;
+              this.reqServ.byClient(this.user.id).subscribe((responce) =>{
+                this.user.requests = responce;
+              })
 
           })
         }

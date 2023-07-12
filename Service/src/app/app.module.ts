@@ -25,6 +25,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RequestComponent } from './request/request.component';
 import  { Ng5SliderModule } from 'ng5-slider';
 import { ToastrModule } from 'ngx-toastr';
+import { AdminComponent } from './admin/admin.component';
+import { ReqlistComponent } from './reqlist/reqlist.component';
+import { ClientsComponent } from './clients/clients.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeedataComponent } from './employeedata/employeedata.component';
+import { HistoryrequestComponent } from './historyrequest/historyrequest.component';
+import { NewrequestComponent } from './newrequest/newrequest.component';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 // import {CdkVirtualScrollableElement} from "@angular/cdk/scrolling";
 @NgModule({
@@ -43,7 +50,14 @@ import { ToastrModule } from 'ngx-toastr';
     ContactsComponent,
     FooterComponent,
     GoodInfoComponent,
-    RequestComponent
+    RequestComponent,
+    AdminComponent,
+    ReqlistComponent,
+    ClientsComponent,
+    EmployeeComponent,
+    EmployeedataComponent,
+    HistoryrequestComponent,
+    NewrequestComponent
   ],
   imports: [
     BrowserModule,

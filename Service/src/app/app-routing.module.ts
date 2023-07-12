@@ -12,6 +12,12 @@ import { KabinetComponent } from './kabinet/kabinet.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { GoodInfoComponent } from './good-info/good-info.component';
 import { RequestComponent } from './request/request.component';
+import { AdminComponent } from './admin/admin.component';
+import { ReqlistComponent } from './reqlist/reqlist.component';
+import { ClientsComponent } from './clients/clients.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeedataComponent } from './employeedata/employeedata.component';
+import { NewrequestComponent } from './newrequest/newrequest.component';
 
 const routes: Routes = [
  { path: 'timing', component: TimingComponent},
@@ -36,7 +42,30 @@ const routes: Routes = [
   {path:'account', component:KabinetComponent},
   {path:'contacts', component:ContactsComponent},
   {path:'request', component:RequestComponent},
+  {path: 'admin',component: AdminComponent,
+  children:[
+    {
+      path : '', component : ReqlistComponent,
+    },
+    {
+      path : 'clients', component : ClientsComponent,
+    },
+    {
+      path : 'employees', component : EmployeeComponent
+    },
+    {
+      path : 'dataadd' , component : EmployeedataComponent,
 
+    },
+    {
+      path : 'data/:id' , component : EmployeedataComponent,
+    },
+    {
+      path : 'newrequest' , component : NewrequestComponent,
+    }
+
+  ]
+  },
 ];
 
 @NgModule({

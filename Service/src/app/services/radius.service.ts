@@ -11,7 +11,7 @@ export class RadiusService {
   private URL: string;
 
   constructor(private http: HttpClient) {
-    this.URL = 'http://localhost:8082/'
+    this.URL = 'https://localhost:7223/api/'
   }
   goods : Radius[] = [];
   public getAllRadius() : Observable<Radius[]>{
